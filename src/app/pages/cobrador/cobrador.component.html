@@ -1,0 +1,143 @@
+<br />
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <p-toolbar styleClass="mb-4">
+        <ng-template pTemplate="left">
+          <button
+            pButton
+            pRipple
+            label="Nuevo"
+            icon="pi pi-plus"
+            class="p-button-success mr-2"
+            (click)="new()"
+          ></button>
+        </ng-template>
+      </p-toolbar>
+
+      <p-table
+        #dt
+        [value]="cobradores"
+        [rows]="10"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [rowHover]="true"
+        dataKey="id_cobrador"
+        [showCurrentPageReport]="true"
+        class="table-sm"
+        [globalFilterFields]="['cedula','nombre','direccion']"
+      >
+        <ng-template pTemplate="caption">
+          <div class="flex">
+            <h3 class="m-0">Gestión de Cobradores</h3>
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Buscar..." />
+            </span>
+        </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Opciones</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cobrador>
+          <tr>
+            <td>{{ cobrador.cedula }}</td>
+            <td>{{ cobrador.nombre }}</td>
+            <td>{{ cobrador.direccion }}</td>
+            <td>
+              <button
+                pButton
+                pRipple
+                icon="pi pi-pencil"
+                class="p-button-rounded p-button-success"
+                (click)="editCobrador(cobrador)"
+              ></button
+              >&nbsp;
+              <button
+                pButton
+                pRipple
+                icon="pi pi-trash"
+                class="p-button-rounded p-button-warning"
+                (click)="deleteCobrador(cobrador)"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+<p-dialog
+  [(visible)]="cobradorDialog"
+  [style]="{ width: '450px' }"
+  header="Mueble"
+  [modal]="true"
+  styleClass="p-fluid"
+>
+  <ng-template pTemplate="content">
+    <div class="field">
+      <label for="code">Cédula</label>
+      <input
+        type="text"
+        pInputText
+        id="code"
+        [(ngModel)]="cobrador.cedula"
+        required
+        autofocus
+      />
+      <small class="p-error" *ngIf="submitted && !cobrador.cedula"
+        >Este campo es requerido.</small
+      >
+    </div>
+    <div class="field">
+      <label for="name">Nombre</label>
+      <input
+        type="text"
+        pInputText
+        id="name"
+        [(ngModel)]="cobrador.nombre"
+        required
+      />
+      <small class="p-error" *ngIf="submitted && !cobrador.nombre"
+        >Este campo es requerido.</small
+      >
+    </div>
+    <div class="field">
+      <label for="color">Cirección</label>
+      <input
+        type="text"
+        pInputText
+        id="color"
+        [(ngModel)]="cobrador.direccion"
+      />
+      <small class="p-error" *ngIf="submitted && !cobrador.direccion"
+        >Este campo es requerido.</small
+      >
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      label="Cancel"
+      icon="pi pi-times"
+      class="p-button-text"
+      (click)="hideDialog()"
+    ></button>
+    <button
+      pButton
+      pRipple
+      label="Save"
+      icon="pi pi-check"
+      class="p-button-text"
+      (click)="save()"
+    ></button>
+  </ng-template>
+</p-dialog>
+<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
