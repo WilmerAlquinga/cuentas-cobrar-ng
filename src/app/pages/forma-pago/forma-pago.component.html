@@ -1,20 +1,6 @@
-<br />
 <div class="row">
   <div class="col-12">
     <div class="card">
-      <p-toolbar styleClass="mb-4">
-        <ng-template pTemplate="left">
-          <button
-            pButton
-            pRipple
-            label="Nuevo"
-            icon="pi pi-plus"
-            class="p-button-success mr-2"
-            (click)="new()"
-          ></button>
-        </ng-template>
-      </p-toolbar>
-
       <p-table
         #dt
         [value]="formasPago"
@@ -30,6 +16,15 @@
         <ng-template pTemplate="caption">
           <div class="flex">
             <h3 class="m-0">Gestión de Formas de Pago</h3>
+            <span class="flex-auto"></span>
+            <button
+            pButton
+            pRipple
+            label="Nuevo"
+            icon="pi pi-plus"
+            class="p-button-success mr-2"
+            (click)="new()"
+          ></button>
             <span class="p-input-icon-left ml-auto">
                 <i class="pi pi-search"></i>
                 <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Buscar..." />

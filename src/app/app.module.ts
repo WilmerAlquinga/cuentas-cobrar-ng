@@ -20,6 +20,10 @@ import { CobradorComponent } from './pages/cobrador/cobrador.component';
 import { FormaPagoComponent } from './pages/forma-pago/forma-pago.component';
 import { ListarComponent } from './pages/cobros/listar/listar.component';
 import { ListarCobrosComponent } from './pages/cobros/listar-cobros/listar-cobros.component';
+import { AppRoutingModule } from './app-routing.module';
+import {TabMenuModule} from 'primeng/tabmenu';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import {CardModule} from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { ListarCobrosComponent } from './pages/cobros/listar-cobros/listar-cobro
     CobradorComponent,
     FormaPagoComponent,
     ListarComponent,
-    ListarCobrosComponent
+    ListarCobrosComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,10 @@ import { ListarCobrosComponent } from './pages/cobros/listar-cobros/listar-cobro
     FormsModule,
     DialogModule,
     InputNumberModule,
-    InputTextModule
+    InputTextModule,
+    AppRoutingModule,
+    TabMenuModule,
+    CardModule
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]
