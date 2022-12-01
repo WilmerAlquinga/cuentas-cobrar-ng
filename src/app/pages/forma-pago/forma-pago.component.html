@@ -11,7 +11,7 @@
         dataKey="id_forma_pago"
         [showCurrentPageReport]="true"
         class="table-sm"
-        [globalFilterFields]="['codigo','nombre']"
+        [globalFilterFields]="['id_forma_de_pago']"
       >
         <ng-template pTemplate="caption">
           <div class="flex">
@@ -33,6 +33,7 @@
         </ng-template>
         <ng-template pTemplate="header">
           <tr>
+            <th>Id</th>
             <th>Código</th>
             <th>Nombre</th>
             <th>Opciones</th>
@@ -40,6 +41,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-formaPago>
           <tr>
+            <td>{{ formaPago.id_forma_de_pago }}</td>
             <td>{{ formaPago.codigo }}</td>
             <td>{{ formaPago.nombre }}</td>
             <td>

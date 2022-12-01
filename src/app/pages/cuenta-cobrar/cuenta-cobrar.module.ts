@@ -10,6 +10,7 @@ import {DialogModule} from 'primeng/dialog';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {InputTextModule} from 'primeng/inputtext';
 import {TooltipModule} from 'primeng/tooltip';
+import {DropdownModule} from 'primeng/dropdown';
 
 import { CuentaCobrarRoutingModule } from './cuenta-cobrar-routing.module';
 import { CuentaCobrarCreateComponent } from './cuenta-cobrar-create/cuenta-cobrar-create.component';
@@ -34,7 +35,8 @@ import { ToolbarModule } from 'primeng/toolbar';
     DialogModule,
     InputNumberModule,
     InputTextModule,
-    TooltipModule
+    TooltipModule,
+    DropdownModule
   ]
 })
 export class CuentaCobrarModule { }

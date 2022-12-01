@@ -4,14 +4,14 @@
       <p-table
         #dt
         [value]="cobros"
-        [rows]="5"
+        [rows]="10"
         [paginator]="true"
         responsiveLayout="scroll"
         [rowHover]="true"
         dataKey="id_cobro"
         [showCurrentPageReport]="true"
         class="table-sm"
-        [globalFilterFields]="['numero_factura','valor_factura','fecha','cliente','estado']"
+        [globalFilterFields]="['id_cobro']"
       >
         <ng-template pTemplate="caption">
           <div class="flex justify-content-between flex-column sm:flex-row">
@@ -81,6 +81,8 @@
                 icon="pi pi-plus"
                 class="p-button-rounded p-button-info mr-2"
                 (click)="newDetail(cobro)"
+                pTooltip="Registrar cobro"
+                tooltipPosition="top"
               ></button>
               <button
                 pButton
@@ -88,6 +90,8 @@
                 icon="pi pi-pencil"
                 class="p-button-rounded p-button-success mr-2"
                 (click)="editCobro(cobro)"
+                pTooltip="Editar Cuenta por Cobrar"
+                tooltipPosition="top"
               ></button>
               <button
                 pButton
@@ -95,6 +99,8 @@
                 icon="pi pi-trash"
                 class="p-button-rounded p-button-warning"
                 (click)="deleteCobro(cobro)"
+                pTooltip="Eliminar Cuenta por Cobrar"
+                tooltipPosition="top"
               ></button>
             </td>
           </tr>
@@ -153,31 +159,18 @@
 >
   <ng-template pTemplate="content">
     <div class="field">
-      <label for="code">Nro. Factura</label>
-      <input
-        type="text"
-        pInputText
-        id="code"
-        [(ngModel)]="cobro.numero_factura"
-        required
-        autofocus
-      />
-      <small class="p-error" *ngIf="submitted && !cobro.numero_factura"
-        >Este campo es requerido.</small
-      >
+      <label for="formaPago">Forma de Pago</label>
+      <p-dropdown 
+        [options]="formasPago" 
+        [(ngModel)]="selectedFormaPago" 
+        optionLabel="nombre"></p-dropdown>
     </div>
     <div class="field">
-      <label for="name">Valor factura</label>
-      <input
-        type="text"
-        pInputText
-        id="name"
-        [(ngModel)]="cobro.valor_factura"
-        required
-      />
-      <small class="p-error" *ngIf="submitted && !cobro.valor_factura"
-        >Este campo es requerido.</small
-      >
+      <label for="cobrador">Cobrador</label>
+      <p-dropdown 
+        [options]="cobradores" 
+        [(ngModel)]="selectedCobrador" 
+        optionLabel="nombre"></p-dropdown>
     </div>
     <div class="field">
       <label for="color">Fecha</label>
@@ -185,9 +178,36 @@
         type="text"
         pInputText
         id="color"
-        [(ngModel)]="cobro.fecha"
+        [(ngModel)]="selectedCobro.fecha"
       />
       <small class="p-error" *ngIf="submitted && !cobro.fecha"
+        >Este campo es requerido.</small
+      >
+    </div>
+    <div class="field">
+      <label for="code">Descripcion</label>
+      <input
+        type="text"
+        pInputText
+        id="code"
+        [(ngModel)]="descripcion"
+        required
+        autofocus
+      />
+      <small class="p-error" *ngIf="submitted && !descripcion"
+        >Este campo es requerido.</small
+      >
+    </div>
+    <div class="field">
+      <label for="name">Valor</label>
+      <input
+        type="number"
+        pInputText
+        id="name"
+        [(ngModel)]="valor"
+        required
+      />
+      <small class="p-error" *ngIf="submitted && !valor"
         >Este campo es requerido.</small
       >
     </div>

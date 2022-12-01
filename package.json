@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:dev": "npm start",
+    "start:debug": "npm start --debug --watch",
+    "start:prod": "node dist/main --host=0.0.0.0 --port 4201 --disable-host-check"
   },
   "private": true,
   "dependencies": {

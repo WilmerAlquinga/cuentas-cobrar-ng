@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Cobro } from '../models/Cobro.types';
 import { Observable } from 'rxjs';
+import { CobroDetalle, GuardarCobroDetalle } from '../models/CobroDetalle.types';
 
 const apiUrl = `${environment.apiUrlV1}/cuentas-cobrar`;
 @Injectable({
@@ -30,5 +31,13 @@ export class CuentasCobrarService {
 
   delete(id: number): Observable<any> {
     return this.http.delete<any>(`${apiUrl}/delete/${id}`);
+  }
+
+  createDetail(detalle: GuardarCobroDetalle): Observable<CobroDetalle> {
+    return this.http.post<CobroDetalle>(`${apiUrl}/detail/create`, detalle);
+  }
+
+  getDetailsByCobroId(id_cobro: number): Observable<CobroDetalle[]> {
+    return this.http.get<CobroDetalle[]>(`${apiUrl}/detail/findAll/${id_cobro}`);
   }
 }

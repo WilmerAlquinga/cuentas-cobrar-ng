@@ -11,7 +11,7 @@
         dataKey="id_cobrador"
         [showCurrentPageReport]="true"
         class="table-sm"
-        [globalFilterFields]="['cedula', 'nombre', 'direccion']"
+        [globalFilterFields]="['id_cobrador']"
       >
         <ng-template pTemplate="caption">
           <div class="flex">
@@ -38,6 +38,7 @@
         </ng-template>
         <ng-template pTemplate="header">
           <tr>
+            <th>Id</th>
             <th>Cédula</th>
             <th>Nombre</th>
             <th>Dirección</th>
@@ -46,6 +47,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-cobrador>
           <tr>
+            <td>{{ cobrador.id_cobrador }}</td>
             <td>{{ cobrador.cedula }}</td>
             <td>{{ cobrador.nombre }}</td>
             <td>{{ cobrador.direccion }}</td>

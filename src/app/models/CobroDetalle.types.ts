@@ -9,3 +9,11 @@ export interface CobroDetalle {
   valor: number;
   cobrador?: string;
 }
+
+export interface GuardarCobroDetalle {
+  id_cobro?: number;
+  valor_cobrado?: number;
+  valor_pendiente?: number;
+  estado?: string;
+  detail: CobroDetalle;
+}
